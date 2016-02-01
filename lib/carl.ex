@@ -4,7 +4,7 @@ defmodule Carl do
 
     paths = [
       {"/foo", Foo, []},
-      # {"/websocket", WebsocketHandler, []}
+      {"/ws", WebsocketHandler, []}
     ]
 
     dispatch = :cowboy_router.compile([{ :_, paths}])

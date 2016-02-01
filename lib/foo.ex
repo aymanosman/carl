@@ -22,24 +22,21 @@ defmodule Foo do
   def build_body(request) do
   """
   <html>
-  <head>
-  <title>Elixir Cowboy Dynamic Example</title>
-  <link rel='stylesheet' href='/static/css/styles.css' type='text/css' />
-  </head>
   <body>
-  <div id='main'>
-  <h1>Dynamic Page Example</h1>
-  <p>This page is rendered via the route: <code>{"/dynamic", DynamicPageHandler, []}</code>
-  <br/>
-  and the code for the handler can be found in <code>lib/dynamic_page_handler.ex</code>.</p>
+    <div id='main'>
 
-  <h2>Current Time (:erlang.now)</h2>
-  <p><span class='time'> #{inspect(:erlang.timestamp)}</span></p>
-  <p>Reload this page to see the time change.</p>
-  <h2>Your Request Headers</h2>
-  <dl>#{dl_headers(request)}</dl>
-  </div>
+    <h2>Current Time (:erlang.now)</h2>
+    <p><span class='time'> #{inspect(:erlang.timestamp)}</span></p>
+    <p>Reload this page to see the time change.</p>
+    <h2>Your Request Headers</h2>
+    <dl>#{dl_headers(request)}</dl>
+    </div>
   </body>
+
+  <script>
+    var ws = new WebSocket('ws://localhost:8080/ws');
+    ws.onmessage = function(e) { console.log(e.data); };
+  </script>
   </html>
   """
   end
