@@ -16,19 +16,25 @@ defmodule WebsocketHandler do
     :ok
   end
 
-  def websocket_handle({:text, content}, req, state) do
-    { :ok, %{ "message" => message} } = JSEX.decode(content)
+  def websocket_handle(frame, req, state) do
+    case frame do
+      {:text, content} ->
+        {:reply, {:text, reverse_it(frame)}, req, state}
 
-    rev = String.reverse(message)
-    { :ok, reply } = JSEX.encode(%{ reply: rev})
-
-    {:reply, {:text, reply}, req, state}
+      _ ->
+        IO.puts "Received a frame I could not handle #{inspect(frame)}"
+        {:ok, req, state}
+    end
   end
 
-  # fallback message handler
-  def websocket_handle(frame, req, state) do
-    IO.puts "Received a frame I could not handle #{inspect(frame)}"
-    {:ok, req, state}
+
+  def reverse_it(content) do
+    {:ok, %{"message" => message}} = JSEX.decode(content)
+
+    rev = String.reverse(message)
+    {:ok, reply} = JSEX.encode(%{ reply: rev})
+
+    reply
   end
 
   def websocket_info({:timeout, _ref, _foo}, req, state) do
