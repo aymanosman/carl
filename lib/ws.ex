@@ -34,10 +34,10 @@ defmodule WebsocketHandler do
   def websocket_info({:timeout, _ref, _foo}, req, state) do
     time = time_as_string()
 
-    { :ok, message } = JSEX.encode(%{time: time})
+    {:ok, message} = JSEX.encode(%{time: time})
     :erlang.start_timer(1000, self(), [])
 
-    { :reply, {:text, message}, req, state}
+    {:reply, {:text, message}, req, state}
   end
 
   # fallback message handler
