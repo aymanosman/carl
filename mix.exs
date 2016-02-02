@@ -17,7 +17,9 @@ defmodule Carl.Mixfile do
   end
 
   defp deps do
-    [ { :cowboy, "1.0.0" },
-      { :jsex, "~> 2.0.0" } ]
+    [ {:cowboy, "1.0.0"},
+      {:jsex, "~> 2.0.0"},
+      {:dialyze, "~> 0.2.0"}
+    ]
   end
 end
