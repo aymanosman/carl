@@ -4,11 +4,10 @@ defmodule Resty do
     {:upgrade, :protocol, :cowboy_rest}
   end
 
-
   def content_types_provided(req, state) do
     mappings = [
-      {{<<"application">>, <<"json">>, []}, :aaa_to_json},
-      {{<<"text">>, <<"html">>, []}, :to_html}
+      {<<"application/json">>, :aaa_to_json},
+      {<<"text/html">>, :to_html}
     ]
     {mappings, req, state}
   end
