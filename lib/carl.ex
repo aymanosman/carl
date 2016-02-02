@@ -4,14 +4,15 @@ defmodule Carl do
 
     paths = [
       {"/foo", Foo, []},
+      {"/resty", Resty, []},
       {"/ws", WebsocketHandler, []}
     ]
 
     dispatch = :cowboy_router.compile([{ :_, paths}])
+    middlewares = [dispatch: dispatch]
     { :ok, _ } = :cowboy.start_http(:http,
                                     100,
                                     [port: 8080],
-                                    [{ :env, [dispatch: dispatch]}]
-    )
+                                    [env: middlewares])
   end
 end
