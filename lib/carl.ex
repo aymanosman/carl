@@ -10,9 +10,9 @@ defmodule Carl do
 
     dispatch = :cowboy_router.compile([{ :_, paths}])
     middlewares = [dispatch: dispatch]
-    { :ok, _ } = :cowboy.start_http(:http,
-                                    100,
-                                    [port: 8080],
-                                    [env: middlewares])
+    {:ok, _} = :cowboy.start_http(:http, # name of the http server
+                                  100, # number of acceptor processes
+                                  [port: 8080],
+                                  [env: middlewares])
   end
 end
