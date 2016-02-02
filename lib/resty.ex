@@ -4,18 +4,17 @@ defmodule Resty do
     {:upgrade, :protocol, :cowboy_rest}
   end
 
+
   def content_types_provided(req, state) do
-    IO.puts "lol wut"
-    # mappings = [
-    #   {"application/json", &aaa_to_json/2}
-    # ]
     mappings = [
-      {{<<"text">>, <<"html">>, '*'}, &to_html/2}
+      {{<<"application">>, <<"json">>, []}, :aaa_to_json},
+      {{<<"text">>, <<"html">>, []}, :to_html}
     ]
     {mappings, req, state}
   end
 
   def to_html(req, state) do
+    IO.puts "lol wut"
     {"<h1>lol</h1>", req, state}
   end
 
