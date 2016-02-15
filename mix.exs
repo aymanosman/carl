@@ -27,7 +27,9 @@ defmodule Carl.Mixfile do
   defp deps do
     [ {:cowboy, "1.0.0"},
       {:jsex, "~> 2.0.0"},
-      {:dialyxir, "~> 0.3", only: [:dev]}
+      {:dialyxir, "~> 0.3", only: [:dev]},
+      {:excheck, "~> 0.3", only: :test},
+      {:triq, github: "krestenkrab/triq", only: :test}
     ]
   end
 end
