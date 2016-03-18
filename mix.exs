@@ -7,14 +7,7 @@ defmodule Carl.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps,
-     dialyzer: [
-       plt_add_deps: true,
-       paths: [
-         "_build/dev/lib/jsex/ebin"
-         # "_build/dev/lib/jsx/ebin"
-       ]
-     ]
+     deps: deps
     ]
   end
 
@@ -26,8 +19,7 @@ defmodule Carl.Mixfile do
 
   defp deps do
     [ {:cowboy, "1.0.0"},
-      {:jsex, "~> 2.0.0"},
-      {:dialyxir, "~> 0.3", only: [:dev]}
+      {:exrm, "~> 1.0.2"},
     ]
   end
 end
