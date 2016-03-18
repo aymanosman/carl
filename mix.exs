@@ -13,13 +13,14 @@ defmodule Carl.Mixfile do
 
   def application do
     [mod: {Carl, []},
-     applications: [:cowboy, :ranch],
+     applications: [:cowboy, :ranch, :jsex],
     ]
   end
 
   defp deps do
     [ {:cowboy, "1.0.0"},
       {:exrm, "~> 1.0.2"},
+      {:jsex, "~> 2.0.0"}
     ]
   end
 end
