@@ -3,7 +3,7 @@ defmodule Carl do
   def start(_type, _args) do
 
     paths = [
-      {"/foo", Foo, []},
+      {"/", Foo, []},
       {"/resty", Resty, []},
       {"/ws", WebsocketHandler, []}
     ]
