@@ -25,6 +25,8 @@ defmodule Foo do
   <body>
     <div id='main'>
 
+    <h2>Node (:erlang.node)</h2>
+    <p>#{inspect(:erlang.node)}</p>
     <h2>Current Time (:erlang.now)</h2>
     <p><span class='time'> #{inspect(:erlang.timestamp)}</span></p>
     <p>Reload this page to see the time change.</p>
