@@ -5,7 +5,7 @@ clean:
 	rm -rf rel
 
 release: build
-	MIX_ENV=prod mix release --port 80
+	PORT=80 MIX_ENV=prod mix release
 
 build: deps
 	MIX_ENV=prod mix compile
@@ -15,3 +15,10 @@ deps:
 
 image:
 	docker build -t carl:v1 .
+
+run:
+	docker run \
+		-p 8080:8080 \
+		-p 1234-1236:1234-1236/tcp \
+		--name carl \
+		carl:v1
