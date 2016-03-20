@@ -1,5 +1,8 @@
-gce-push: release
+gce-push: clean release
 	gsutil cp rel/carl/releases/0.0.1/carl.tar.gz gs://aosman/carl.tar.gz
+
+clean:
+	rm -rf rel
 
 release: build
 	MIX_ENV=prod mix release
