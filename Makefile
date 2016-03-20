@@ -5,7 +5,7 @@ clean:
 	rm -rf rel
 
 release: build
-	MIX_ENV=prod mix release
+	MIX_ENV=prod mix release --port 80
 
 build: deps
 	MIX_ENV=prod mix compile

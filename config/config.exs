@@ -9,9 +9,14 @@ use Mix.Config
 # 3rd-party users, it should be done in your "mix.exs" file.
 
 # You can configure for your application as:
-{kv, pos, _} = OptionParser.parse(System.argv)
-{port, _} = (kv[:port] || "8080")
-     |> Integer.parse()
+port = case :init.get_argument(:port) do
+  :error -> 8080
+
+  {:ok, [[port]]} ->
+    List.to_integer port
+end
+
+IO.puts "We are using port #{port}"
 
 config :carl, port: port
 #
