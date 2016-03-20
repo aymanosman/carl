@@ -13,12 +13,12 @@ build: deps
 deps:
 	mix deps.get
 
-image:
+image: build
 	docker build -t carl:v1 .
 
-run:
+run: image
 	docker run \
-		-p 8080:8080 \
+		-p 8080:80 \
 		-p 1234-1236:1234-1236/tcp \
 		--name carl \
 		carl:v1
