@@ -16,9 +16,11 @@ defmodule Carl do
       :cowboy_handler
     ]
 
+    port = 80
+
     {:ok, _} = :cowboy.start_http(:http, # name of the http server
                                   100, # number of acceptor processes
-                                  [port: 8080],
+                                  [port: port],
                                   [env: [dispatch: dispatch],
                                    middlewares: middlewares])
   end
