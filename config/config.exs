@@ -9,8 +9,11 @@ use Mix.Config
 # 3rd-party users, it should be done in your "mix.exs" file.
 
 # You can configure for your application as:
-#
-#     config :carl, key: :value
+{kv, pos, _} = OptionParser.parse(System.argv)
+{port, _} = (kv[:port] || "8080")
+     |> Integer.parse()
+
+config :carl, port: port
 #
 # And access this configuration in your application as:
 #
