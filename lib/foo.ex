@@ -36,7 +36,8 @@ defmodule Foo do
   </body>
 
   <script>
-    var ws = new WebSocket('ws://localhost:8080/ws');
+    var host = window.location.host;
+    var ws = new WebSocket('ws://'+host+'/ws');
     ws.onmessage = function(e) { console.log(e.data); };
   </script>
   </html>
