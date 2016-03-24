@@ -33,3 +33,5 @@ config :carl, port: port
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+config :ex_aws,
+  region: "eu-west-1"
