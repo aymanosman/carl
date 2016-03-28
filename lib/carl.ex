@@ -17,6 +17,7 @@ defmodule Carl do
     ]
 
     port = Application.get_env(:carl, :port)
+    IO.puts "Will bind to PORT #{port}"
 
     {:ok, _} = :cowboy.start_http(:http, # name of the http server
                                   100, # number of acceptor processes
