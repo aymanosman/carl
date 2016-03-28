@@ -1,5 +1,12 @@
-gce-push: clean release
+IMAGE=carl:v1.0.1
+GCR_PREFIX=gcr.io/aosman-alpha
+
+google-storage-push: clean release
 	gsutil cp rel/carl/releases/0.0.1/carl.tar.gz gs://aosman/carl.tar.gz
+
+gcr-push: image
+	docker tag ${IMAGE} ${GCR_PREFIX}/${IMAGE}
+	gcloud docker push ${GCR_PREFIX}/${IMAGE}
 
 clean:
 	rm -rf rel
@@ -14,7 +21,7 @@ deps:
 	mix deps.get
 
 image: build
-	docker build -t carl:v1 .
+	docker build -t ${IMAGE} .
 
 run: image
 	docker run \
