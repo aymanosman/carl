@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: carl
+spec:
+  containers:
+  - name: carl
+    image: gcr.io/aosman-alpha/carl:v1
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
+      hostPort: 80
