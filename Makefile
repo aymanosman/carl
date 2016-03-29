@@ -1,4 +1,4 @@
-IMAGE=carl:v1.0.1
+IMAGE=carl:v1.0.2
 GCR_PREFIX=gcr.io/aosman-alpha
 
 google-storage-push: clean release
@@ -9,7 +9,7 @@ gcr-push: image
 	gcloud docker push ${GCR_PREFIX}/${IMAGE}
 
 clean:
-	rm -rf rel
+	rm -rf rel/carl
 
 release: build
 	PORT=80 MIX_ENV=prod mix release
