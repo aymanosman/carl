@@ -10,3 +10,4 @@ expose 9000-9100
 # entrypoint that will read env for $MY_POD_IP
 # starting erl with -name carl@$MY_POD_IP
 entrypoint ["/entrypoint-kubernetes.sh"]
+cmd ["/bin/carl", "foreground"]

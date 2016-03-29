@@ -1,4 +1,4 @@
-IMAGE=carl:v1.0.2
+IMAGE=carl:v1.0.3
 GCR_PREFIX=gcr.io/aosman-alpha
 
 google-storage-push: clean release
@@ -29,3 +29,6 @@ run: image
 		-p 1234-1236:1234-1236/tcp \
 		--name carl \
 		carl:v1
+
+test-entrypoint:
+	docker run -it --rm -e MY_POD_IP=10.99.99.99 carl bash
