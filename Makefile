@@ -1,4 +1,4 @@
-IMAGE=carl:v1.0.3
+IMAGE=carl:v1.0.4
 GCR_PREFIX=gcr.io/aosman-alpha
 
 google-storage-push: clean release
@@ -7,6 +7,10 @@ google-storage-push: clean release
 gcr-push: image
 	docker tag carl ${GCR_PREFIX}/${IMAGE}
 	gcloud docker push ${GCR_PREFIX}/${IMAGE}
+
+docker-hub-push: image
+	docker tag carl aosman/${IMAGE}
+	docker push aosman/${IMAGE}
 
 clean:
 	rm -rf rel/carl

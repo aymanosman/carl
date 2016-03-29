@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: carl-1
-        image: aosman/carl:v1.0.3
+        image: aosman/carl:v1.0.4
         env:
         - name: MY_POD_NAME
           valueFrom:
