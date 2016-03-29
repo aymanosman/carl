@@ -17,6 +17,7 @@ spec:
       containers:
       - name: carl-1
         image: gcr.io/aosman-alpha/carl:v1.0.2
+        command: [ "/bin/sh", "-c", "env" ]
         env:
         - name: MY_POD_NAME
           valueFrom:
