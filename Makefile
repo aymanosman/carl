@@ -5,7 +5,7 @@ google-storage-push: clean release
 	gsutil cp rel/carl/releases/0.0.1/carl.tar.gz gs://aosman/carl.tar.gz
 
 gcr-push: image
-	docker tag ${IMAGE} ${GCR_PREFIX}/${IMAGE}
+	docker tag carl ${GCR_PREFIX}/${IMAGE}
 	gcloud docker push ${GCR_PREFIX}/${IMAGE}
 
 clean:
@@ -20,8 +20,8 @@ build: deps
 deps:
 	mix deps.get
 
-image: build
-	docker build -t ${IMAGE} .
+image:
+	docker build -t carl:latest .
 
 run: image
 	docker run \
