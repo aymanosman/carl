@@ -12,6 +12,13 @@ mike:
 		--machine-type f1-micro \
 		--tags http-server \
 
+virding:
+	gcloud compute instances create virding \
+		--image ubuntu-14-04 \
+		--metadata-from-file startup-script=bootstrap.sh \
+		--machine-type f1-micro \
+		--tags http-server \
+
 vm-1:
 	gcloud compute instances create vm-1 \
 		--image container-vm \
