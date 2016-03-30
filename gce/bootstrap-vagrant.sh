@@ -19,6 +19,7 @@ cat $hostserlang
 
 cd /home/vagrant/code
 tar -xzf carl.tar.gz
+chown -R vagrant:vagrant .
 # export HOME=/home/vagrant
 bin/carl start
 bin/carl rpc net_adm world
