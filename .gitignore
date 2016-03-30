@@ -4,4 +4,4 @@
 erl_crash.dump
 *.ez
 rel/carl
-rel.tar.gz
+.vagrant
